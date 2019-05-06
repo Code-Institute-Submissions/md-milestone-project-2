@@ -1,6 +1,6 @@
 queue()
    //Loading CSV Data
-  .defer(d3.csv, "/data/dc.csv")
+  .defer(d3.csv, "./data/dc.csv")
    .await(makeChart); //Calling the function makeChart
 function makeChart(error, dcData) { //first param is error and not data
 
