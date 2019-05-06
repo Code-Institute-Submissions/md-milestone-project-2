@@ -44,39 +44,56 @@
         </section>
         <section class="container-fluid">
             <div class="row">
-                <nav class="col-md-2 d-none d-md-block bg-light sidebar" style="height: 100%;">
+                <nav class="col-md-2 d-none d-md-block sidebar">
                     <div class="sidebar-sticky">
-                        <div id="univers-selector"></div>
-                        <div id="category-selector"></div>
-                        <div id="alignment-selector"></div>
+                        <div class="sidebar-element">
+                            <h5>Select Universum</h5>
+                            <div id="univers-selector"></div>
+                        </div>
+                        <div class="sidebar-element">
+                            <h5>Select Race</h5>
+                            <div id="category-selector"></div>
+                        </div>
+                        <div class="sidebar-element">
+                            <h5>Select Alignment</h5>
+                            <div id="alignment-selector"></div>
+                        </div>
+                    </div>
+                    <div id="reset-all">
                         <a href="javascript:dc.filterAll(); dc.renderAll();">Reset All</a>
                     </div>
                 </nav>
-                <main role='main' class='col-md-9 ml-sm-auto col-lg-10 pt-3 px-4'>
-                    
-                    <div class="row">
-                        <div id="heros_by_race" class='col-md-5 d-inline'></div>
-                        <div id="gender-balance-dc" class="col-md-5 d-inline"></div>
+                <main role='main' class='col-md-10 col-lg-10'>
+                    <div class="row piecharts">
+                        <div id="heros_by_race" class='col-md-3 d-inline'></div>
+                        <div id="gender-balance-dc" class="col-md-3 d-inline"></div>
+                        <div id="alignment-procentage" class="col-md-3 d-inline"></div>
                     </div>
-                    <div class="row">
+                    <div class="row linechart">
                         <div id="apperance_t_years"></div>
                     </div>
+                    <div class="row linechart">
+                         <div id="apperances_t_years_by_universum"></div>
+                     </div>
                     <div id="power-distribution-by-inteligance"></div>
                     <div id="power-distribution-by-gender"></div>
-                    <div id="characterWiki col-md-10">
-                        <button onclick="getCharacterInfo()">Show me random superhero!</button>
-                        <div class="container">
-                            <div class="row">
+                    <div class="row">
+                    <div id="characterWiki">
+
+                        <button class="randomSuperHero" onclick="getCharacterInfo()">Show me random superhero!</button>
+
+                        <div class="randomHeroRenderArea row d-flex">
+                            <div class="col-12">
                                 <div id="character-image" class="col-md-12"></div>
                             </div>
                         </div>
                     </div>
+                    </div>
+                    </div>
                 </main>
             </div>
-
         </section>
     </body>
-
     <script
         src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
         integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"

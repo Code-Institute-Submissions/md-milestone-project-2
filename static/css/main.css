@@ -1,21 +1,88 @@
-/*Typography*/
-
+/*---- Typography -------------------------------------------------------*/
 @import url('https://rsms.me/inter/inter.css');
 html { font-family: 'Inter', sans-serif; }
 @supports (font-variation-settings: normal) {
   html { font-family: 'Inter var', sans-serif; }
 }
 
-h1,h2,h3,h4,h5,h6,p,span,body {
+h1, h2, h3, h4, h5, h6, p, a, span, body {
     font-family: 'Inter', sans-serif;
 }
 /**/
 nav h1 {
     color: #fff;
 }
-/* svg d3.js graph styling*/
+.sidebar-sticky h5 {
+  color: #fff;
+}
+/*---- Dashboard Styling -------------------------------------------------------*/
+
+.sidebar {
+  background-color: #484750;
+}
+.sidebar-element {
+  padding-top: 20px;
+}
+.piecharts {
+  background-color: #0a0a0a;
+  padding: 50px 0 50px 0;
+  color: #fff;
+}
+.linechart {
+  padding: 50px 0 50px 40px;
+  background-color: #26282e;
+}
+.randomHeroRenderArea {
+  min-height: 400px;
+}
+/* Dashboard Buttons */
+#reset-all {
+  background-color: #C54961;
+  border-radius: 10px;
+  text-align: center;
+  padding: 20px;
+  margin-top: 20px;
+}
+#reset-all a {
+  text-decoration: none;
+  color: #fff;
+}
+.randomSuperHero {
+  background-color: #C54961;
+  border-radius: 10px;
+  color: #fff;
+  padding: 15px 40px;
+}
+
+/*---- PieCharts ---------------------------------------------------------------*/
+
+.dc-legend-item text {
+  fill: #fff;
+}
+/*---- Line Chart ---------------------------------------------------------------*/
+.dc-chart .axis path, .dc-chart .axis line {
+  fill: none;
+  stroke: #ccc;
+  shape-rendering: crispEdges;
+  stroke-width: 1 
+}
 path.line
 {
     fill: none;
-    stroke: #000;
+}
+.tick text {
+  stroke: #fff;
+}
+/*---- API output ---------------------------------------------------------------*/
+.randomHeroRenderArea {
+  background-color: #26282e;
+  padding: 40px 0 20px 0;
+  margin: 0;
+}
+.ApiImage, .ApiBioEntry {
+  float: left;
+  color: #fff;
+}
+#characterWiki {
+  width: 100%;
 }

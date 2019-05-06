@@ -73,9 +73,9 @@ Doomsday,The Ultimate Lifeform,bad,90,100,Red,Doomsday,male,White,8'0 // 244 cm,
 Captain-Marvel,"The World's Mightiest Mortal, The Big Red Cheese, Captain Thunder, Shazam",good,56,95,Blue,William Joseph Batson,male,Black,6'4 // 193 cm,100,-,"Fawcett City, United States",100,DC Comics,Human,Human,,67,100,225 lb // 101 kg,1967
 Red-Tornado,"Ulthoon, Tornado Tyrant of Rann, Tornado Champion, Tornado Man Dreaming, ""Reddy""",good,40,60,Green,John Smith,male,No Hair,6'1 // 185 cm,75,-,-,100,DC Comics,Robot,Robot,,67,38,325 lb // 146 kg,1968
 Venom,-,bad,84,84,Blue,Edward Charles Allan Brock,male,Strawberry Blond,6'3 // 191 cm,75,-,"New York, New York",86,Marvel Comics,Symbiote,Alien,,65,57,260 lb // 117 kg,1984
-Anti-Venom,"Eddie, Edwin Brock, Venom, Lethal Protector, White Venom, 998th",-,84,90,Blue,Edward Charles Allan Brock,male,Blond,7'6 // 229 cm,75,-,"San Francisco, California",96,Marvel Comics,Symbiote,Alien,,65,60,795 lb // 358 kg,2008
+Anti-Venom,"Eddie, Edwin Brock, Venom, Lethal Protector, White Venom, 998th",undeclared,84,90,Blue,Edward Charles Allan Brock,male,Blond,7'6 // 229 cm,75,-,"San Francisco, California",96,Marvel Comics,Symbiote,Alien,,65,60,795 lb // 358 kg,2008
 Hulk,"Annihilator, Captain Universe, Joe Fixit, Mr. Fixit, Mechano, Professor, War",good,85,100,Green,Robert Bruce Banner,male,Green,8'0 // 244 cm,88,"Jade Jaws, Golly Green Giant","Dayton, Ohio",98,Marvel Comics,Human / Radiation,Human,Green,63,100,1400 lb // 630 kg,1962
-Venompool,Deadpool,-,100,100,-,-,male,-,7'5 // 226 cm,69,-,-,100,Marvel Comics,Symbiote,Alien,,63,57,- lb // 0 kg,1980
+Venompool,Deadpool,undeclared,100,100,-,-,male,-,7'5 // 226 cm,69,-,-,100,Marvel Comics,Symbiote,Alien,,63,57,- lb // 0 kg,1980
 Human-Torch,"Matchstick Johnny, Doug Brown",good,42,70,Blue,Jonathan Lowell Spencer Storm,male,Blond,5'10 // 178 cm,63,Johnny,"Glenville, Long Island, New York",84,Marvel Comics,Human / Radiation,Human,,63,11,170 lb // 77 kg,1961
 Brainiac,Milton Fine,bad,75,90,Green,Vril Dox,male,No Hair,6'6 // 198 cm,100,-,-,60,DC Comics,Android,Alien,Green,63,95,300 lb // 135 kg,1958
 War-Machine,"Rhodey, Iron Man, Jim Rhodes",good,85,100,Brown,James Rupert Rhodes,male,Brown,6'1 // 185 cm,63,-,"Philadelphia, Pennsylvania",100,Marvel Comics,Human,Human,,63,80,210 lb // 95 kg,1979
@@ -449,7 +449,7 @@ Ben-10,Ben Ten,good,40,10,-,Benjamin Kirby Tennyson,male,-,- // 0 cm,10,-,-,90,D
 John-Constantine,Hellblazer,good,65,40,Blue,John Constantine,male,Blond,6'0 // 183 cm,63,-,-,49,DC Comics,Human,Human,,8,10,- lb // 0 kg,1985
 Hawkeye-II,Kate Bishop,good,50,10,Blue,Katherine Elizabeth Bishop,female,Black,5'5 // 165 cm,50,-,"New York City, New York",24,Marvel Comics,Human,Human,,8,6,126 lb // 57 kg,2005
 Purple-Man,Kilgrave,bad,10,30,Purple,Zebediah Killgrave,male,Purple,5'11 // 180 cm,56,-,-,92,Marvel Comics,Human,Human,Purple,8,10,165 lb // 74 kg,1964
-Blackwulf,"Pelops, Black Wolf",-,25,30,Red,Lucian,male,White,6'2 // 188 cm,50,-,Armechadon,69,Marvel Comics,Alien,Alien,,8,28,195 lb // 88 kg,1994
+Blackwulf,"Pelops, Black Wolf",undeclared,25,30,Red,Lucian,male,White,6'2 // 188 cm,50,-,Armechadon,69,Marvel Comics,Alien,Alien,,8,28,195 lb // 88 kg,1994
 Cottonmouth,Quincy McIver,bad,25,10,Brown,Burchell Clemens,male,Black,6'0 // 183 cm,50,-,-,27,Marvel Comics,Human,Human,,8,10,220 lb // 99 kg,1974
 Black-Knight-III,"The Pendragon, Gann Josin, Eobar Garrington",good,70,70,Brown,Dane Whitman,male,Brown,6'0 // 183 cm,63,-,"Gloucester, Massachusetts",43,Marvel Comics,Human,Human,,8,10,190 lb // 86 kg,1967
 Man-Thing,the Vagornus Koth; the Swamp Walker; Mr. Salad; Walking Mulch Heap,good,40,100,Red,Dr. Theodore Sallis,male,No Hair,7'0 // 213 cm,50,-,-,100,Marvel Comics,-,Unknown,Green,8,32,500 lb // 225 kg,1971
