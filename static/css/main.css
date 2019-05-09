@@ -16,26 +16,87 @@ nav h1 {
   color: #fff;
 }
 /*---- Dashboard Styling -------------------------------------------------------*/
-
+.wrapper {
+  display: flex;
+  width: 100%;
+  align-items: stretch;
+  perspective: 1500px;
+  background-color: #0a0a0a;
+}
+#content {
+  width: 100%;
+  padding: 20px;
+  transition: all 0.3s;
+}
+/*Sidebar -------------------------------------------------------*/ 
+.sidebar-sticky {
+  position: -webkit-sticky; 
+  position: sticky;
+  top: 0;
+  padding: 0 20px 0 20px;
+}
+.sticky {
+  position: -webkit-sticky; 
+  position: sticky;
+  top: 20px;
+}
 .sidebar {
   background-color: #484750;
 }
 .sidebar-element {
   padding-top: 20px;
 }
-.piecharts {
-  background-color: #0a0a0a;
-  padding: 50px 0 50px 0;
+#sidebarCollapse {
+  width: 40px;
+  height: 40px;
+  background: #f5f5f5;
+  cursor: pointer;
+}
+/*sidebar collapse button -------------------------------------------------------*/
+#sidebarCollapse span {
+  width: 80%;
+  height: 2px;
+  margin: 0 auto;
+  display: block;
+  background: #555;
+  transition: all 0.8s cubic-bezier(0.810, -0.330, 0.345, 1.375);
+  transition-delay: 0.2s;
+}
+#sidebarCollapse span:first-of-type {
+  transform: rotate(45deg) translate(2px, 2px);
+}
+#sidebarCollapse span:nth-of-type(2) {
+  opacity: 0;
+}
+#sidebarCollapse span:last-of-type {
+  transform: rotate(-45deg) translate(1px, -1px);
+}
+#sidebarCollapse.active span {
+  transform: none;
+  opacity: 1;
+  margin: 5px auto;
+}
+#sidebar {
+  min-width: 250px;
+  max-width: 250px;
+  background: #35373d;
   color: #fff;
+  transition: all 0.6s cubic-bezier(0.945, 0.020, 0.270, 0.665);
+  transform-origin: bottom left;
 }
-.linechart {
-  padding: 50px 0 50px 40px;
-  background-color: #26282e;
+#sidebar.active {
+  margin-left: -250px;
+  transform: rotateY(100deg);
 }
-.randomHeroRenderArea {
-  min-height: 400px;
+#sidebar .sidebar-header {
+  padding: 20px;
+  background: #505050;
 }
-/* Dashboard Buttons */
+.row {
+  margin-right: -20px;
+  margin-left: -20px;
+}
+/* Dashboard Buttons -------------------------------------------------------*/
 #reset-all {
   background-color: #C54961;
   border-radius: 10px;
@@ -43,7 +104,7 @@ nav h1 {
   padding: 20px;
   margin-top: 20px;
 }
-#reset-all a {
+.sidebar-sticky a  {
   text-decoration: none;
   color: #fff;
 }
@@ -53,11 +114,14 @@ nav h1 {
   color: #fff;
   padding: 15px 40px;
 }
-
 /*---- PieCharts ---------------------------------------------------------------*/
-
 .dc-legend-item text {
   fill: #fff;
+}
+.piecharts {
+  background-color: #0a0a0a;
+  padding: 50px 40px 50px 0;
+  color: #fff;
 }
 /*---- Line Chart ---------------------------------------------------------------*/
 .dc-chart .axis path, .dc-chart .axis line {
@@ -65,6 +129,10 @@ nav h1 {
   stroke: #ccc;
   shape-rendering: crispEdges;
   stroke-width: 1 
+}
+.linechart {
+  padding: 50px 20px 50px 100px;
+  background-color: #26282e;
 }
 path.line
 {
@@ -83,6 +151,42 @@ path.line
   float: left;
   color: #fff;
 }
+.randomHeroRenderArea {
+  min-height: 400px;
+}
 #characterWiki {
   width: 100%;
+}
+/* ---------------------------------------------------
+  MEDIAQUERIES
+----------------------------------------------------- */
+@media (max-width: 768px) {
+  #sidebar {
+      margin-left: -250px;
+      transform: rotateY(90deg);
+  }
+  #sidebar.active {
+      margin-left: 0;
+      transform: none;
+  }
+  #sidebarCollapse span:first-of-type,
+  #sidebarCollapse span:nth-of-type(2),
+  #sidebarCollapse span:last-of-type {
+      transform: none;
+      opacity: 1;
+      margin: 5px auto;
+  }
+  #sidebarCollapse.active span {
+      margin: 0 auto;
+  }
+  #sidebarCollapse.active span:first-of-type {
+      transform: rotate(45deg) translate(2px, 2px);
+  }
+  #sidebarCollapse.active span:nth-of-type(2) {
+      opacity: 0;
+  }
+  #sidebarCollapse.active span:last-of-type {
+      transform: rotate(-45deg) translate(1px, -1px);
+  }
+
 }

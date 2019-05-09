@@ -39,10 +39,10 @@ function getCharacterInfo(event) {
 
         }, function (errorResponse) {
             if (errorResponse.status == 404) {
-                $('#charactername').html(`<p>error</p>`)
-            } else {
+                $('#charactername').html(`<p>404: Resource doesn't exist or was moved. Sorry :(</p>`)
+            } else if (errorResponse.status == 503) {
                 console.log(errorResponse);
-                $('#charactername').html(`<p>error: ${errorResponse.responseJSON.message}</p>`)
+                $('#charactername').html(`<p>503: API IS CURRENTLY UNAVAILABLE. Please try again later</p>`)
             }
         })
 }

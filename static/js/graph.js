@@ -1,15 +1,13 @@
 queue()
-//Loading CSV Data
+    //Loading CSV Data
     .defer(d3.csv, "./data/data.csv")
-    .await(makeChart); //Calling the function makeChart
-function makeChart(error, dcData) { //first param is error and not data
-
-    var ndx = crossfilter(dcData); // global crossfilter
-
-
-
+    //Calling the function makeChart
+    .await(makeChart); 
+function makeChart(error, dcData) { 
+    // global crossfilter
+    let ndx = crossfilter(dcData); 
     //Creating a date format of just a Year
-    var FirstApperanceDate = d3
+    let FirstApperanceDate = d3
         .time
         .format("%Y")
         .parse;
@@ -24,18 +22,17 @@ function makeChart(error, dcData) { //first param is error and not data
     //Graphs
     dc_heros_by_gender(ndx);
     heros_by_alignment(ndx);
-    power_distribution_by_universum(ndx);
+//    power_distribution_by_universum(ndx);
     power_distribution_by_gender(ndx);
     heros_by_race(ndx);
     new_apperances_through_years(ndx);
-
     apperances_t_years_by_universum(ndx, dcData);
     //Rendering Graphs
     dc.renderAll();
 }
 function show_universum_selector(ndx) {
-    var dim = ndx.dimension(dc.pluck('Publisher'));
-    var group = dim.group();
+    let dim = ndx.dimension(dc.pluck('Publisher'));
+    let group = dim.group();
 
     dc
         .selectMenu("#univers-selector")
@@ -44,8 +41,8 @@ function show_universum_selector(ndx) {
 
 }
 function show_category_selector(ndx) {
-    var dim = ndx.dimension(dc.pluck('Category'));
-    var group = dim.group();
+    let dim = ndx.dimension(dc.pluck('Category'));
+    let group = dim.group();
 
     dc
         .selectMenu("#category-selector")
@@ -53,21 +50,21 @@ function show_category_selector(ndx) {
         .group(group);
 }
 function show_alignment(ndx) {
-    var dim = ndx.dimension(dc.pluck('Alignment'));
-    var group = dim.group();
+    let dim = ndx.dimension(dc.pluck('Alignment'));
+    let group = dim.group();
 
     dc
         .selectMenu("#alignment-selector")
         .dimension(dim)
-        .group(group);
+        .group(group)
 }
 function dc_heros_by_gender(ndx) {
-    var dim = ndx.dimension(dc.pluck('Gender'));
-    var group = dim.group();
+    let dim = ndx.dimension(dc.pluck('Gender'));
+    let group = dim.group();
 
     one = dc
         .pieChart("#gender-balance-dc")
-        .width(500)
+        .width(485)
         .dimension(dim)
         .group(group)
         .innerRadius(50)
@@ -78,12 +75,12 @@ function dc_heros_by_gender(ndx) {
 
 }
 function heros_by_race(ndx) {
-    var dim = ndx.dimension(dc.pluck('Category'));
-    var group = dim.group();
+    let dim = ndx.dimension(dc.pluck('Category'));
+    let group = dim.group();
 
     dc
         .pieChart("#heros_by_race")
-        .width(500)
+        .width(470)
         .dimension(dim)
         .group(group)
         .innerRadius(50)
@@ -101,12 +98,12 @@ function heros_by_race(ndx) {
         .transitionDuration(1000)
 }
 function heros_by_alignment(ndx) {
-    var dim = ndx.dimension(dc.pluck('Alignment'));
-    var group = dim.group();
+    let dim = ndx.dimension(dc.pluck('Alignment'));
+    let group = dim.group();
 
     dc
         .pieChart("#alignment-procentage")
-        .width(500)
+        .width(470)
         .dimension(dim)
         .group(group)
         .innerRadius(50)
@@ -124,23 +121,21 @@ function heros_by_alignment(ndx) {
         .transitionDuration(1000)
 }
 function new_apperances_through_years(ndx, dcData) {
-    var dim = ndx.dimension(dc.pluck("FirstApperance"));
+    let dim = ndx.dimension(dc.pluck("FirstApperance"));
 
-    var numberofApperances = dim
+    let numberofApperances = dim
         .group()
         .reduceCount();
-    var minDate = dim
+    let minDate = dim
         .bottom(1)[0]
         .FirstApperance;
-    var maxDate = dim
+    let maxDate = dim
         .top(1)[0]
         .FirstApperance;
     
-    //var dcApperances = numberofApperances.reduceCount('DC Comics');
-
     dc
         .lineChart("#apperance_t_years")
-        .width(800)
+        .width(1200)
         .height(300)
         .elasticY(true)
         .x(d3.time.scale().domain([minDate, maxDate]))
@@ -152,23 +147,24 @@ function new_apperances_through_years(ndx, dcData) {
         .renderArea(true)
         .ordinalColors(["#C54961"])
         .renderDataPoints(numberofApperances)
+        .dotRadius(10)
 
 }
 
 function power_distribution_by_universum(ndx) {
-    var universumColors = d3
+    let universumColors = d3
         .scale
         .ordinal()
         .domain(["Marvel Comics", "DC Comics"])
         .range(["red", "blue"]);
 
-    var pDim = ndx.dimension(dc.pluck("Power"));
-    var uDim = ndx.dimension(function (d) {
+    let pDim = ndx.dimension(dc.pluck("Power"));
+    let uDim = ndx.dimension(function (d) {
         return [d.Power, d.Intelligence, d.HeroName, d.Publisher];
     });
-    var universeGroup = uDim.group();
-    var minPower = 0;
-    var maxPower = 110;
+    let universeGroup = uDim.group();
+    let minPower = 0;
+    let maxPower = 110;
 
     dc
         .scatterPlot("#power-distribution-by-inteligance")
@@ -192,23 +188,23 @@ function power_distribution_by_universum(ndx) {
         .margins({top: 10, right: 50, bottom: 75, left: 75});
 }
 function power_distribution_by_gender(ndx) {
-    var universumColors = d3
+    let universumColors = d3
         .scale
         .ordinal()
         .domain(["female", "male", ["unidentified"]])
         .range(["#E064CD", "#56B2EA", "#F8B700"]);
 
-    var pDim = ndx.dimension(dc.pluck("Power"));
-    var uDim = ndx.dimension(function (d) {
+    let pDim = ndx.dimension(dc.pluck("Power"));
+    let uDim = ndx.dimension(function (d) {
         return [d.Power, d.Intelligence, d.HeroName, d.Gender];
     });
-    var universeGroup = uDim.group();
-    var minPower = 0;
-    var maxPower = 110;
+    let universeGroup = uDim.group();
+    let minPower = 0;
+    let maxPower = 110;
 
     dc
         .scatterPlot("#power-distribution-by-gender")
-        .width(800)
+        .width(1200)
         .height(400)
         .x(d3.scale.linear().domain([minPower, maxPower]))
         .y(d3.scale.linear().domain([0, 110]))
@@ -217,7 +213,7 @@ function power_distribution_by_gender(ndx) {
         .clipPadding(1)
         .xAxisLabel("Power incorelation to  Inteligence")
         .title(function (d) {
-            return d.key[2] + " has power of " + d.key[0] + " and inteligance of " + d.key[1];
+            return d.key[2] + " is " + d.key[3] + " and has power of " + d.key[0] + " and inteligance of " + d.key[1];
         })
         .colorAccessor(function (d) {
             return d.key[3];
@@ -225,7 +221,8 @@ function power_distribution_by_gender(ndx) {
         .colors(universumColors)
         .dimension(pDim)
         .group(universeGroup)
-        .margins({top: 10, right: 50, bottom: 75, left: 75});
+        .symbolSize(7)
+        .margins({top: 10, right: 50, bottom: 75, left: 75})
 }
 function apperances_t_years_by_universum(ndx, dcData) {
     dcData.forEach(function(x) {
@@ -236,16 +233,16 @@ function apperances_t_years_by_universum(ndx, dcData) {
         }
     });
 
-    var dim = ndx.dimension(function(data){
+    let dim = ndx.dimension(function(data){
         return [data.Publisher, data.FirstApperance];
     });
-    var group = dim.group().reduceCount();
+    let group = dim.group().reduceCount();
 
-    var minDate = dim.bottom(1)[0].FirstApperance;
-    var maxDate = dim.top(1)[0].FirstApperance;
+    let minDate = dim.bottom(1)[0].FirstApperance;
+    let maxDate = dim.top(1)[0].FirstApperance;
 
     dc.seriesChart('#apperances_t_years_by_universum')
-    .width(800)
+    .width(1200)
     .height(600)
    // .chart(function(c) { 
     //    return dc.lineChart(c).interpolate('cardinal').evadeDomainFilter(true); 
@@ -262,7 +259,7 @@ function apperances_t_years_by_universum(ndx, dcData) {
     //.xAxisLabel("Height")
     .yAxisLabel("Count")
     .dimension(dim)
-    .group(group)
+    .group(group)        
     .seriesAccessor(function(d) { return d.key[0];})
     .keyAccessor(function(d) { return +d.key[1]; })
     .valueAccessor(function(d) { return +d.value; })

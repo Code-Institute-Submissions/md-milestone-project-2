@@ -1,105 +1,90 @@
-<!doctype html>
-<html lang="en">
-    <head>
-        <!-- Required meta tags -->
-        <meta charset="utf-8">
-        <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <!-- Bootstrap CSS -->
-        <link
-            rel="stylesheet"
-            href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-            integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-            crossorigin="anonymous">
-        <!--D3.js-->
-        <script type="text/javascript" src="./static/lib/d3.min.js"></script>
-        <!--crossfilter-->
-        <script type="text/javascript" src="./static/lib/crossfilter.min.js"></script>
-        <!--dc.js-->
-        <script type="text/javascript" src="./static/lib/dc.min.js"></script>
-        <script type="text/javascript" src="./static/lib/queue.min.js"></script>
-        <!--jQuery-->
-        <script
-            src="https://code.jquery.com/jquery-3.4.1.min.js"
-            integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-            crossorigin="anonymous"></script>
-        <!--Data Graphs-->
-        <script type="text/javascript" src="./static/js/graph.js"></script>
-        <!--API-->
-        <script type="text/javascript" src="./static/js/superHeroAPI.js"></script>
-        <!-- CSS -->
-        <link rel="stylesheet" href="./static/css/main.css">
-        <title>Your Comics</title>
-    </head>
-    <body>
-        <!-- Optional JavaScript -->
-        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-        <section class="container-fluid bg-dark">
-            <div class="row">
-                <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
-                    <h1>Marvel vs DC by numbers</h1>
-                </nav>
+<!DOCTYPE html>
+<html lang="em">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Marvel vs DC</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+   <!--D3.js-->
+    <script type="text/javascript" src="./static/lib/d3.min.js"></script>
+    <!--crossfilter-->
+    <script type="text/javascript" src="./static/lib/crossfilter.min.js"></script>
+    <!--dc.js-->
+    <script type="text/javascript" src="./static/lib/dc.min.js"></script>
+    <script type="text/javascript" src="./static/lib/queue.min.js"></script>
+    <!--jQuery-->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <!--Data Graphs-->
+    <script type="text/javascript" src="./static/js/graph.js"></script>
+    <!--API JS-->
+    <script type="text/javascript" src="./static/js/superHeroAPI.js"></script>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="./static/css/main.css">
+</head>
+<body>
+    <div class="wrapper">
+        <!-- Sidebar Holder -->
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <h3>Marvel vs DC</h3>
             </div>
-        </section>
-        <section class="container-fluid">
-            <div class="row">
-                <nav class="col-md-2 d-none d-md-block sidebar">
-                    <div class="sidebar-sticky">
-                        <div class="sidebar-element">
-                            <h5>Select Universum</h5>
-                            <div id="univers-selector"></div>
-                        </div>
-                        <div class="sidebar-element">
-                            <h5>Select Race</h5>
-                            <div id="category-selector"></div>
-                        </div>
-                        <div class="sidebar-element">
-                            <h5>Select Alignment</h5>
-                            <div id="alignment-selector"></div>
-                        </div>
+            <div class="sidebar-sticky">
+                    <div class="sidebar-element">
+                        <h5>Select Universum</h5>
+                        <div id="univers-selector"></div>
+                    </div>
+                    <div class="sidebar-element">
+                        <h5>Select Race</h5>
+                        <div id="category-selector"></div>
+                    </div>
+                    <div class="sidebar-element">
+                        <h5>Select Alignment</h5>
+                        <div id="alignment-selector"></div>
                     </div>
                     <div id="reset-all">
-                        <a href="javascript:dc.filterAll(); dc.renderAll();">Reset All</a>
+                            <a href="javascript:dc.filterAll(); dc.renderAll();">Reset All</a> 
                     </div>
-                </nav>
-                <main role='main' class='col-md-10 col-lg-10'>
-                    <div class="row piecharts">
-                        <div id="heros_by_race" class='col-md-3 d-inline'></div>
-                        <div id="gender-balance-dc" class="col-md-3 d-inline"></div>
-                        <div id="alignment-procentage" class="col-md-3 d-inline"></div>
-                    </div>
-                    <div class="row linechart">
-                        <div id="apperance_t_years"></div>
-                    </div>
-                    <div class="row linechart">
-                         <div id="apperances_t_years_by_universum"></div>
-                     </div>
-                    <div id="power-distribution-by-inteligance"></div>
-                    <div id="power-distribution-by-gender"></div>
-                    <div class="row">
-                    <div id="characterWiki">
-
-                        <button class="randomSuperHero" onclick="getCharacterInfo()">Show me random superhero!</button>
-
-                        <div class="randomHeroRenderArea row d-flex">
-                            <div class="col-12">
-                                <div id="character-image" class="col-md-12"></div>
-                            </div>
+            </div>
+        </nav>
+        <!-- Page Content Holder -->
+        <div role="main" id="content">
+                <button type="button" id="sidebarCollapse" class="sticky">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                </button>
+            <div class="row piecharts">
+                    <div id="heros_by_race" class='col-sm-12 d-sm-block col-md-4 d-md-inline'></div>
+                    <div id="gender-balance-dc" class="col-sm-12 d-sm-block col-md-4 d-inline"></div>
+                    <div id="alignment-procentage" class="col-sm-12 d-sm-block col-md-4 d-inline"></div>
+                </div>
+                <div class="row linechart">
+                    <div id="apperance_t_years" class="col-12"></div>
+                </div>
+                <div class="row linechart">
+                     <div id="apperances_t_years_by_universum"></div>
+                 </div>
+                <div id="power-distribution-by-inteligance"></div>
+                <div id="power-distribution-by-gender"></div>
+                <div class="row">
+                <div id="characterWiki">
+                    <button class="randomSuperHero" onclick="getCharacterInfo()">Show me random superhero!</button>
+                    <div class="randomHeroRenderArea row d-flex">
+                        <div class="col-12">
+                            <div id="character-image" class="col-md-12"></div>
                         </div>
                     </div>
-                    </div>
-                    </div>
-                </main>
-            </div>
-        </section>
-    </body>
-    <script
-        src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-        crossorigin="anonymous"></script>
-    <script
-        src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script>
+                </div>
+                </div>
+                </div>
+     </div>
+    </div>
+    <!-- Popper.JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+    <!---->
+    <script src="./static/js/interaction.js"></script>
+</body>
 </html>
