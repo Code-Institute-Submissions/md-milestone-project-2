@@ -1,12 +1,11 @@
 function charInfo(character) {
-
-    var firstname = character.biography["first-name"];
-    console.log('rak');
+    // Displaying Data do html on #character-info-target
     return `
-            <div class="ApiImage col-3">
+        <div class="row">
+            <div class="ApiImage col-sm-12 col-md-4">
                 <img src="${character.image.url}" width="250" height="333"/>
             </div>
-            <div class="ApiBioEntry col-6">
+            <div class="ApiBioEntry col-sm-12 col-md-6">
                 <h1>${character.name}</h1>
                 <span>Full Name: <h3>${character.biography['full-name']}</h3></span>
                 <span>Publisher: <h4>${character.biography.publisher}</h4></span>
@@ -19,11 +18,16 @@ function charInfo(character) {
                     <li>Eye Color: ${character.appearance['eye-color']}</li>
                 </ul>
             </div>
+        </div>
             `;
 }
-function getCharacterInfo(event) {
-
-    function randomCharacterID() {
+function getCharacterInfo() {
+    //Loader.gif
+    $('#character-info-target').html(`<div id="loader" style="text-align: center;">
+                                <img src="static/img/loader.gif" alt="Loading..."/>
+                              </div>`);
+                    
+    function randomCharacterID() { //Radomising a number between 1 and 731 
         var min = 1;
         var max = 731;
 
@@ -31,18 +35,19 @@ function getCharacterInfo(event) {
         return random;
     }
     console.log(randomCharacterID());
-    $
+    $   //Requesting JSON data from API by using randomly generated ID
         .when($.getJSON(`https://cors.io/?https://superheroapi.com/api/2459027580820827/${randomCharacterID()}`))
         .then(function (response) {
             console.log(response);
-            $('#character-image').html(charInfo(response));
+            //Push data to charInfo Function tobe displayed
+            $('#character-info-target').html(charInfo(response));
 
         }, function (errorResponse) {
             if (errorResponse.status == 404) {
-                $('#charactername').html(`<p>404: Resource doesn't exist or was moved. Sorry :(</p>`)
+                $('#character-info-target').html(`<p>404: Resource doesn't exist or was moved. Sorry :(</p>`)
             } else if (errorResponse.status == 503) {
                 console.log(errorResponse);
-                $('#charactername').html(`<p>503: API IS CURRENTLY UNAVAILABLE. Please try again later</p>`)
+                $('#character-info-target').html(`<p>503: API IS CURRENTLY UNAVAILABLE. Please try again later</p>`)
             }
         })
 }

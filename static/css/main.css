@@ -15,7 +15,7 @@ nav h1 {
 .sidebar-sticky h5 {
   color: #fff;
 }
-/*---- Dashboard Styling -------------------------------------------------------*/
+/*---- Dashboard Styling ----------------------------------------------------------*/
 .wrapper {
   display: flex;
   width: 100%;
@@ -26,9 +26,16 @@ nav h1 {
 #content {
   width: 100%;
   padding: 20px;
-  transition: all 0.3s;
+  /*transition: all 0.3s;*/
+}
+.row {
+  margin-right: -20px;
+  margin-left: -20px;
 }
 /*Sidebar -------------------------------------------------------*/ 
+select {
+  width: 100%;
+}
 .sidebar-sticky {
   position: -webkit-sticky; 
   position: sticky;
@@ -51,6 +58,22 @@ nav h1 {
   height: 40px;
   background: #f5f5f5;
   cursor: pointer;
+}
+#sidebar {
+  min-width: 250px;
+  max-width: 250px;
+  background: #35373d;
+  color: #fff;
+  transition: all 0.6s cubic-bezier(0.945, 0.020, 0.270, 0.665);
+  transform-origin: bottom left;
+}
+#sidebar.active {
+  margin-left: -250px;
+  transform: rotateY(100deg);
+}
+#sidebar .sidebar-header {
+  padding: 20px;
+  background: #505050;
 }
 /*sidebar collapse button -------------------------------------------------------*/
 #sidebarCollapse span {
@@ -76,27 +99,8 @@ nav h1 {
   opacity: 1;
   margin: 5px auto;
 }
-#sidebar {
-  min-width: 250px;
-  max-width: 250px;
-  background: #35373d;
-  color: #fff;
-  transition: all 0.6s cubic-bezier(0.945, 0.020, 0.270, 0.665);
-  transform-origin: bottom left;
-}
-#sidebar.active {
-  margin-left: -250px;
-  transform: rotateY(100deg);
-}
-#sidebar .sidebar-header {
-  padding: 20px;
-  background: #505050;
-}
-.row {
-  margin-right: -20px;
-  margin-left: -20px;
-}
 /* Dashboard Buttons -------------------------------------------------------*/
+
 #reset-all {
   background-color: #C54961;
   border-radius: 10px;
@@ -114,6 +118,12 @@ nav h1 {
   color: #fff;
   padding: 15px 40px;
 }
+#characterWiki button {
+  margin: 50px 0 0 50px;
+}
+button {
+  border: none;
+}
 /*---- PieCharts ---------------------------------------------------------------*/
 .dc-legend-item text {
   fill: #fff;
@@ -121,8 +131,9 @@ nav h1 {
 .piecharts {
   background-color: #0a0a0a;
   padding: 50px 40px 50px 0;
-  color: #fff;
+  
 }
+
 /*---- Line Chart ---------------------------------------------------------------*/
 .dc-chart .axis path, .dc-chart .axis line {
   fill: none;
@@ -130,22 +141,39 @@ nav h1 {
   shape-rendering: crispEdges;
   stroke-width: 1 
 }
-.linechart {
-  padding: 50px 20px 50px 100px;
-  background-color: #26282e;
-}
 path.line
 {
     fill: none;
+}
+/*---- General Chart Styling -----------------------------------------------------*/
+.linechart, .scatterplot, .seriesChart, .piecharts {
+  padding: 50px 20px 50px 100px;
+  overflow: auto;  
+}
+.piecharts h5, .linechart h5, .scatterplot h5, .seriesChart h5 {
+  margin-bottom: 50px;
+  color: #fff;
+}
+.linechart {
+  background-color: #141418;
+}
+.seriesChart{
+  background-color: #1e1f24;
+}
+.scatterplot {
+  background-color: #2b2c33;
+}
+.x-axis-label, .y-axis-label {
+  fill: #fff;
 }
 .tick text {
   stroke: #fff;
 }
 /*---- API output ---------------------------------------------------------------*/
 .randomHeroRenderArea {
-  background-color: #26282e;
   padding: 40px 0 20px 0;
   margin: 0;
+  width: 100%;
 }
 .ApiImage, .ApiBioEntry {
   float: left;
@@ -156,6 +184,35 @@ path.line
 }
 #characterWiki {
   width: 100%;
+  background-color: #26282e;
+}
+#loader {
+  width: 100%;
+  margin: 0 auto;
+}
+/*Back to top---------------------------------------------------------------*/
+#back-to-top {
+  display: flex;
+  background-color: #C54961;
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  opacity: 0;
+  visibility: hidden;
+  z-index: 1000;
+  padding: 10px 20px;
+  border-radius: 5px;
+  color: #fff;
+  transition: background-color .3s, 
+    opacity .3s, visibility .5s;
+}
+#back-to-top:hover {
+  cursor: pointer;
+  background-color: rgb(223, 94, 120);
+}
+#back-to-top.show {
+  opacity: 1;
+  visibility: visible;
 }
 /* ---------------------------------------------------
   MEDIAQUERIES
@@ -188,5 +245,33 @@ path.line
   #sidebarCollapse.active span:last-of-type {
       transform: rotate(-45deg) translate(1px, -1px);
   }
-
 }
+
+/*
+@media (max-width: 768px) {
+  #new_apperance_through_years, 
+  #power_to_int_distribution_by_gender, 
+  #new_apperance_through_years_by_universum {
+    display: none;
+  }
+  #MOBILEnew_apperance_through_years,
+  #MOBILEpower_to_int_distribution_by_gender, 
+  #MOBILEnew_apperance_through_years_by_universum {
+    display: block;
+    overflow: scroll;
+  }
+}
+@media (min-width: 769px) {
+  #new_apperance_through_years, 
+  #power_to_int_distribution_by_gender, 
+  #new_apperance_through_years_by_universum {
+    display: block;
+    overflow: scroll;
+  }
+  #MOBILEnew_apperance_through_years,
+  #MOBILEpower_to_int_distribution_by_gender, 
+  #MOBILEnew_apperance_through_years_by_universum {
+    display: none;
+  }
+  
+}*/

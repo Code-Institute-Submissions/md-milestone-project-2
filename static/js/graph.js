@@ -18,20 +18,21 @@ function makeChart(error, dcData) {
     //Caling graphs function to be rendered Selectors
     show_universum_selector(ndx);
     show_category_selector(ndx);
-    show_alignment(ndx)
-    //Graphs
-    dc_heros_by_gender(ndx);
-    heros_by_alignment(ndx);
-//    power_distribution_by_universum(ndx);
-    power_distribution_by_gender(ndx);
-    heros_by_race(ndx);
+    show_alignment_selector(ndx)
+    //Piecharts
+    characters_by_gender(ndx);
+    characters_by_race(ndx);
+    characters_by_alignment(ndx);
+    //Scatterplots
+    power_to_int_distribution_by_gender(ndx);
+    //Linecharts
     new_apperances_through_years(ndx);
-    apperances_t_years_by_universum(ndx, dcData);
+    new_apperances_through_years_by_universum(ndx, dcData);
     //Rendering Graphs
     dc.renderAll();
 }
 function show_universum_selector(ndx) {
-    let dim = ndx.dimension(dc.pluck('Publisher'));
+    let dim = ndx.dimension(dc.pluck("Publisher"));
     let group = dim.group();
 
     dc
@@ -41,7 +42,7 @@ function show_universum_selector(ndx) {
 
 }
 function show_category_selector(ndx) {
-    let dim = ndx.dimension(dc.pluck('Category'));
+    let dim = ndx.dimension(dc.pluck("Category"));
     let group = dim.group();
 
     dc
@@ -49,8 +50,8 @@ function show_category_selector(ndx) {
         .dimension(dim)
         .group(group);
 }
-function show_alignment(ndx) {
-    let dim = ndx.dimension(dc.pluck('Alignment'));
+function show_alignment_selector(ndx) {
+    let dim = ndx.dimension(dc.pluck("Alignment"));
     let group = dim.group();
 
     dc
@@ -58,33 +59,33 @@ function show_alignment(ndx) {
         .dimension(dim)
         .group(group)
 }
-function dc_heros_by_gender(ndx) {
-    let dim = ndx.dimension(dc.pluck('Gender'));
+function characters_by_gender(ndx) {
+    let dim = ndx.dimension(dc.pluck("Gender"));
     let group = dim.group();
 
     one = dc
-        .pieChart("#gender-balance-dc")
-        .width(485)
+        .pieChart("#characters_by_gender")
+        .width(390)
         .dimension(dim)
         .group(group)
         .innerRadius(50)
-        .legend(dc.legend().x(380).y(70).itemHeight(13).gap(5))
+        .legend(dc.legend().x(1).y(70).itemHeight(13).gap(5))
         .renderLabel(false)
         .ordinalColors(["#7CCFCD", "#E58579", "#822F56"])
         .transitionDuration(1000)
 
 }
-function heros_by_race(ndx) {
-    let dim = ndx.dimension(dc.pluck('Category'));
+function characters_by_race(ndx) {
+    let dim = ndx.dimension(dc.pluck("Category"));
     let group = dim.group();
 
     dc
-        .pieChart("#heros_by_race")
-        .width(470)
+        .pieChart("#characters_by_race")
+        .width(370)
         .dimension(dim)
         .group(group)
         .innerRadius(50)
-        .legend(dc.legend().x(380).y(40).itemHeight(13).gap(5))
+        .legend(dc.legend().x(1).y(40).itemHeight(13).gap(5))
         .renderLabel(false)
         .ordinalColors([
             "#2F2936",
@@ -97,17 +98,17 @@ function heros_by_race(ndx) {
         ])
         .transitionDuration(1000)
 }
-function heros_by_alignment(ndx) {
-    let dim = ndx.dimension(dc.pluck('Alignment'));
+function characters_by_alignment(ndx) {
+    let dim = ndx.dimension(dc.pluck("Alignment"));
     let group = dim.group();
 
     dc
-        .pieChart("#alignment-procentage")
-        .width(470)
+        .pieChart("#characters_by_alignment")
+        .width(370)
         .dimension(dim)
         .group(group)
         .innerRadius(50)
-        .legend(dc.legend().x(380).y(60).itemHeight(13).gap(5))
+        .legend(dc.legend().x(1).y(60).itemHeight(13).gap(5))
         .renderLabel(false)
         .ordinalColors([
             "#2F2936",
@@ -120,7 +121,7 @@ function heros_by_alignment(ndx) {
         ])
         .transitionDuration(1000)
 }
-function new_apperances_through_years(ndx, dcData) {
+function new_apperances_through_years(ndx) {
     let dim = ndx.dimension(dc.pluck("FirstApperance"));
 
     let numberofApperances = dim
@@ -134,10 +135,9 @@ function new_apperances_through_years(ndx, dcData) {
         .FirstApperance;
     
     dc
-        .lineChart("#apperance_t_years")
+        .lineChart("#new_apperance_through_years")
         .width(1200)
         .height(300)
-        .elasticY(true)
         .x(d3.time.scale().domain([minDate, maxDate]))
         .elasticX(true)
         .brushOn(false)
@@ -145,49 +145,54 @@ function new_apperances_through_years(ndx, dcData) {
         .dimension(dim)
         .group(numberofApperances)
         .renderArea(true)
+        .title(function(d){
+            let year = d.key.getFullYear();
+            return "In " + year + " there was " + d.value + " of total new apperances";
+        })
         .ordinalColors(["#C54961"])
+        .y(d3.scale.linear().domain([0, 32]))
         .renderDataPoints(numberofApperances)
         .dotRadius(10)
-
+        
 }
-
-function power_distribution_by_universum(ndx) {
-    let universumColors = d3
-        .scale
-        .ordinal()
-        .domain(["Marvel Comics", "DC Comics"])
-        .range(["red", "blue"]);
-
-    let pDim = ndx.dimension(dc.pluck("Power"));
-    let uDim = ndx.dimension(function (d) {
-        return [d.Power, d.Intelligence, d.HeroName, d.Publisher];
+function new_apperances_through_years_by_universum(ndx, dcData) {
+    // setting dimension or serierschart
+    let dim = ndx.dimension(function(data){
+        return [data.Publisher, data.FirstApperance];
     });
-    let universeGroup = uDim.group();
-    let minPower = 0;
-    let maxPower = 110;
-
-    dc
-        .scatterPlot("#power-distribution-by-inteligance")
-        .width(800)
-        .height(400)
-        .x(d3.scale.linear().domain([minPower, maxPower]))
-        .y(d3.scale.linear().domain([0, 110]))
-        .brushOn(false)
-        .symbolSize(6)
-        .clipPadding(1)
-        .xAxisLabel("Power incorelation to  Inteligence")
-        .title(function (d) {
-            return d.key[2] + " has power of " + d.key[0] + " and inteligance of " + d.key[1];
-        })
-        .colorAccessor(function (d) {
-            return d.key[3];
-        })
-        .colors(universumColors)
-        .dimension(pDim)
-        .group(universeGroup)
-        .margins({top: 10, right: 50, bottom: 75, left: 75});
+    // grouping values from dimension
+    let group = dim.group().reduceCount();
+    // looking for minimum and maximum date
+    let minDate = dim.bottom(1)[0].FirstApperance;
+    let maxDate = dim.top(1)[0].FirstApperance;
+    //creating a chart
+    dc.seriesChart('#new_apperance_through_years_by_universum')
+    .width(1200)
+    .height(600)
+    .chart(function(c) { 
+        return dc.lineChart(c)
+                 .evadeDomainFilter(false)
+                 .xyTipsOn(true);     
+                })
+    .x(d3.time.scale().domain([minDate, maxDate]))
+    .y(d3.scale.linear().domain([0, 27]))
+    .brushOn(false)
+    .yAxisLabel("Count")
+    .dimension(dim)
+    .elasticY(true)
+    .group(group)    
+    .useRightAxisGridLines(true) 
+    .title(function(d){
+        let rok = d.key[1].getFullYear();
+        return "In " + rok + " there was " + d.value  + " new apperances";
+    })
+    //.mouseZoomable(true)   
+    .seriesAccessor(function(d) { return d.key[0];})
+    .keyAccessor(function(d) { return +d.key[1]; })
+    .valueAccessor(function(d) { return +d.value; })
+    .legend(dc.legend().x(70).y(50).itemHeight(20).gap(10).horizontal(4).legendWidth(200).itemWidth(120));
 }
-function power_distribution_by_gender(ndx) {
+function power_to_int_distribution_by_gender(ndx) {
     let universumColors = d3
         .scale
         .ordinal()
@@ -203,7 +208,7 @@ function power_distribution_by_gender(ndx) {
     let maxPower = 110;
 
     dc
-        .scatterPlot("#power-distribution-by-gender")
+        .scatterPlot("#power_to_int_distribution_by_gender")
         .width(1200)
         .height(400)
         .x(d3.scale.linear().domain([minPower, maxPower]))
@@ -211,9 +216,9 @@ function power_distribution_by_gender(ndx) {
         .brushOn(false)
         .symbolSize(6)
         .clipPadding(1)
-        .xAxisLabel("Power incorelation to  Inteligence")
+        .xAxisLabel("Power in correlation to Intelligence")
         .title(function (d) {
-            return d.key[2] + " is " + d.key[3] + " and has power of " + d.key[0] + " and inteligance of " + d.key[1];
+            return d.key[2] + " is " + d.key[3] + " and has power of " + d.key[0] + " and intelligence of " + d.key[1];
         })
         .colorAccessor(function (d) {
             return d.key[3];
@@ -224,45 +229,3 @@ function power_distribution_by_gender(ndx) {
         .symbolSize(7)
         .margins({top: 10, right: 50, bottom: 75, left: 75})
 }
-function apperances_t_years_by_universum(ndx, dcData) {
-    dcData.forEach(function(x) {
-        if (x.Publisher == 'Marvel Comics') {
-            x.newdata = 1;
-        }   else {
-            x.newdata =2;
-        }
-    });
-
-    let dim = ndx.dimension(function(data){
-        return [data.Publisher, data.FirstApperance];
-    });
-    let group = dim.group().reduceCount();
-
-    let minDate = dim.bottom(1)[0].FirstApperance;
-    let maxDate = dim.top(1)[0].FirstApperance;
-
-    dc.seriesChart('#apperances_t_years_by_universum')
-    .width(1200)
-    .height(600)
-   // .chart(function(c) { 
-    //    return dc.lineChart(c).interpolate('cardinal').evadeDomainFilter(true); 
-  //  })
-    .x(d3.time.scale().domain([minDate, maxDate]))
-    .y(d3.scale.linear().domain([0, 30]))
-    .chart(function(c) { 
-        return dc.lineChart(c)
-                 .evadeDomainFilter(false)
-                 .xyTipsOn(true);     
-                })
-    //.elasticY(true)
-    .brushOn(false)
-    //.xAxisLabel("Height")
-    .yAxisLabel("Count")
-    .dimension(dim)
-    .group(group)        
-    .seriesAccessor(function(d) { return d.key[0];})
-    .keyAccessor(function(d) { return +d.key[1]; })
-    .valueAccessor(function(d) { return +d.value; })
-    .legend(dc.legend().x(70).y(50).itemHeight(20).gap(10).horizontal(4).legendWidth(200).itemWidth(120));
-}
-
