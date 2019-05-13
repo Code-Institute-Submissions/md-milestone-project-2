@@ -63,7 +63,7 @@ function characters_by_gender(ndx) {
     let dim = ndx.dimension(dc.pluck("Gender"));
     let group = dim.group();
 
-    one = dc
+    dc
         .pieChart("#characters_by_gender")
         .width(390)
         .dimension(dim)
@@ -123,16 +123,12 @@ function characters_by_alignment(ndx) {
 }
 function new_apperances_through_years(ndx) {
     let dim = ndx.dimension(dc.pluck("FirstApperance"));
-
     let numberofApperances = dim
         .group()
         .reduceCount();
-    let minDate = dim
-        .bottom(1)[0]
-        .FirstApperance;
-    let maxDate = dim
-        .top(1)[0]
-        .FirstApperance;
+    //finding minimum and maximum date from dataset
+    let minDate = dim.bottom(1)[0].FirstApperance;
+    let maxDate = dim.top(1)[0].FirstApperance;
     
     dc
         .lineChart("#new_apperance_through_years")
@@ -146,6 +142,7 @@ function new_apperances_through_years(ndx) {
         .group(numberofApperances)
         .renderArea(true)
         .title(function(d){
+            //tooltip title format
             let year = d.key.getFullYear();
             return "In " + year + " there was " + d.value + " of total new apperances";
         })
@@ -162,7 +159,7 @@ function new_apperances_through_years_by_universum(ndx, dcData) {
     });
     // grouping values from dimension
     let group = dim.group().reduceCount();
-    // looking for minimum and maximum date
+    // looking for minimum and maximum date from dataset
     let minDate = dim.bottom(1)[0].FirstApperance;
     let maxDate = dim.top(1)[0].FirstApperance;
     //creating a chart
@@ -185,8 +182,7 @@ function new_apperances_through_years_by_universum(ndx, dcData) {
     .title(function(d){
         let rok = d.key[1].getFullYear();
         return "In " + rok + " there was " + d.value  + " new apperances";
-    })
-    //.mouseZoomable(true)   
+    })  
     .seriesAccessor(function(d) { return d.key[0];})
     .keyAccessor(function(d) { return +d.key[1]; })
     .valueAccessor(function(d) { return +d.value; })
@@ -198,26 +194,29 @@ function power_to_int_distribution_by_gender(ndx) {
         .ordinal()
         .domain(["female", "male", ["unidentified"]])
         .range(["#E064CD", "#56B2EA", "#F8B700"]);
-
+    //creating a dimension by Power    
     let pDim = ndx.dimension(dc.pluck("Power"));
+    //creating a dimension with nessesary data for display
     let uDim = ndx.dimension(function (d) {
         return [d.Power, d.Intelligence, d.HeroName, d.Gender];
     });
+    //grouping values
     let universeGroup = uDim.group();
     let minPower = 0;
-    let maxPower = 110;
+    let maxPower = 105;
 
     dc
         .scatterPlot("#power_to_int_distribution_by_gender")
         .width(1200)
         .height(400)
         .x(d3.scale.linear().domain([minPower, maxPower]))
-        .y(d3.scale.linear().domain([0, 110]))
+        .y(d3.scale.linear().domain([0, 105]))
         .brushOn(false)
         .symbolSize(6)
         .clipPadding(1)
         .xAxisLabel("Power in correlation to Intelligence")
         .title(function (d) {
+            //tooltip title format
             return d.key[2] + " is " + d.key[3] + " and has power of " + d.key[0] + " and intelligence of " + d.key[1];
         })
         .colorAccessor(function (d) {

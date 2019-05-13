@@ -4,11 +4,9 @@ html { font-family: 'Inter', sans-serif; }
 @supports (font-variation-settings: normal) {
   html { font-family: 'Inter var', sans-serif; }
 }
-
 h1, h2, h3, h4, h5, h6, p, a, span, body {
     font-family: 'Inter', sans-serif;
 }
-/**/
 nav h1 {
     color: #fff;
 }
@@ -100,7 +98,6 @@ select {
   margin: 5px auto;
 }
 /* Dashboard Buttons -------------------------------------------------------*/
-
 #reset-all {
   background-color: #C54961;
   border-radius: 10px;
@@ -133,7 +130,6 @@ button {
   padding: 50px 40px 50px 0;
   
 }
-
 /*---- Line Chart ---------------------------------------------------------------*/
 .dc-chart .axis path, .dc-chart .axis line {
   fill: none;
@@ -148,7 +144,7 @@ path.line
 /*---- General Chart Styling -----------------------------------------------------*/
 .linechart, .scatterplot, .seriesChart, .piecharts {
   padding: 50px 20px 50px 100px;
-  overflow: auto;  
+  overflow: auto;
 }
 .piecharts h5, .linechart h5, .scatterplot h5, .seriesChart h5 {
   margin-bottom: 50px;
@@ -190,7 +186,7 @@ path.line
   width: 100%;
   margin: 0 auto;
 }
-/*Back to top---------------------------------------------------------------*/
+/*Back to top------------------------------------------------------------------*/
 #back-to-top {
   display: flex;
   background-color: #C54961;
@@ -214,9 +210,7 @@ path.line
   opacity: 1;
   visibility: visible;
 }
-/* ---------------------------------------------------
-  MEDIAQUERIES
------------------------------------------------------ */
+/* MEDIAQUERIES----------------------------------------------------- */
 @media (max-width: 768px) {
   #sidebar {
       margin-left: -250px;
@@ -246,32 +240,3 @@ path.line
       transform: rotate(-45deg) translate(1px, -1px);
   }
 }
-
-/*
-@media (max-width: 768px) {
-  #new_apperance_through_years, 
-  #power_to_int_distribution_by_gender, 
-  #new_apperance_through_years_by_universum {
-    display: none;
-  }
-  #MOBILEnew_apperance_through_years,
-  #MOBILEpower_to_int_distribution_by_gender, 
-  #MOBILEnew_apperance_through_years_by_universum {
-    display: block;
-    overflow: scroll;
-  }
-}
-@media (min-width: 769px) {
-  #new_apperance_through_years, 
-  #power_to_int_distribution_by_gender, 
-  #new_apperance_through_years_by_universum {
-    display: block;
-    overflow: scroll;
-  }
-  #MOBILEnew_apperance_through_years,
-  #MOBILEpower_to_int_distribution_by_gender, 
-  #MOBILEnew_apperance_through_years_by_universum {
-    display: none;
-  }
-  
-}*/
