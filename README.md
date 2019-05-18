@@ -1,11 +1,15 @@
 # Marvel vs DC
 
+
 PC vs Apple, Bad vs Evil there are multiple of ongoing rivalries in our culture.
 The main one in the comic book community is Marvel vs DC. This project focuses on comparing both of them as well as provide a broader look at their combined landscape.
 
+[Visit live project](https://delegacz.github.io/md-milestone-project-2/)
+
 ## UX
 
-### Wireframes: link
+### Wireframes: 
+[Figma Link](https://www.figma.com/proto/YIxpkiMtXfE8miEKQM9v4YaQ/Untitled?node-id=1%3A2&viewport=391%2C305%2C0.1969379186630249&scaling=min-zoom&redirected=1)
 
 This website is a one-page dashboard consisting of a sidebar on the left-hand side (to provide controls and filters ) and content area on the right containing various graphs displaying the data.
 
@@ -33,6 +37,16 @@ Users want to look up and compare data. Data is visualized through interactive g
 - As a user, I can filter data by race so I can see an alignment distribution across a race of Gods
 - As a user, I can filter data by Universum so I can see a peak of the first appearances in Marvel Universum
 
+## Design 
+
+###Color Pallet
+
+####UI Elements Colors:
+<img src ="./readme_assets/uicolors.png">
+
+####Data Elements Colors:
+
+####Gender Colors:
 
 ## Features
  
@@ -80,17 +94,35 @@ displayed data
 
 ## Deployment
 
+This project was developed using [Microsoft Visual Studio Code](https://code.visualstudio.com/). [Git](https://git-scm.com/) was used for version control and backup, It was then pushed to remote [repository on github](https://github.com/delegacz/md-milestone-project-2). GitHub repository was then pushed to GitHub Pages Accessable [here](https://delegacz.github.io/md-milestone-project-2/)
+
+##### Deployment Process
+1. Login to [GitHub](https://www.github.com/)
+2. Select **delegacz/md-milestone-project-2** from depository list
+3. Go to **Settings** from navigation on the top of the page
+4. Scroll down to Github Pages section, then click **Source** and change it to **master branch**
+5. The page is refreshed and deployed. It may take couple of minutes to be available 
+
+
 The website was coded in Visual Studio Code. Version Control and backup were managed using git. The project was committed and pushed to remote GitHub repository and made accessible using Git Hub Pages.
 
 ## Credits
+[Inter Font](https://rsms.me/inter/) by [Rasmus Andersson](https://rsms.me/about/)
+[SuperheroAPI](https://www.superheroapi.com/)
 
 ### Content
 
-Core data set source: was edited and optimized by me.
+Core data set [source]() was edited and optimised by me for purposes of this project [Edited version](https://docs.google.com/spreadsheets/d/1UUGye5Q6DPn7NuKc09viH5Moh8dNLq6PCgp1NilCPx8/edit?usp=sharing)
 
+[Collapsing Sidebar for Bootstrap](https://bootstrapious.com/p/bootstrap-sidebar)
 ### Media
+[SuperheroAPI](https://www.superheroapi.com/)  - API Used for random hero generator
+[Cors.io](https://cors.io/) - An CORS Proxy for puposes of dealing with  'Access-Control-Allow-Origin' header error
 
 All pictures visible are sourced from Superhero API and are under copyright from their respectful publishers  
 
 ### Acknowledgements
+[Rasmus Andersson](https://rsms.me/about/) - Amazing Inter Font
+[DC Comics](https://www.dccomics.com/) - Inspiration and great characters 
+[Marvel Comics](www.marvel.com) - Inspiration and great characters 
 

@@ -31,6 +31,10 @@ function makeChart(error, dcData) {
     //Rendering Graphs
     dc.renderAll();
 }
+/*
+Function is displaying selector which filters data by Universum 
+Its dimensions key is 'Publisher' from dataset
+*/
 function show_universum_selector(ndx) {
     let dim = ndx.dimension(dc.pluck("Publisher"));
     let group = dim.group();
@@ -41,6 +45,10 @@ function show_universum_selector(ndx) {
         .group(group);
 
 }
+/*
+Function is displaying selector which filters data by Race 
+Its dimension key is 'Category' from dataset
+*/
 function show_category_selector(ndx) {
     let dim = ndx.dimension(dc.pluck("Category"));
     let group = dim.group();
@@ -50,6 +58,10 @@ function show_category_selector(ndx) {
         .dimension(dim)
         .group(group);
 }
+/*
+Function is displaying selector which filters data by Alignment 
+Its dimension key is 'Alignment' from dataset
+*/
 function show_alignment_selector(ndx) {
     let dim = ndx.dimension(dc.pluck("Alignment"));
     let group = dim.group();
@@ -59,6 +71,10 @@ function show_alignment_selector(ndx) {
         .dimension(dim)
         .group(group)
 }
+/*
+This function displays a piechart featuring gender distribution across entire dataset
+Its dimension key is 'Gender' from dataset
+ */
 function characters_by_gender(ndx) {
     let dim = ndx.dimension(dc.pluck("Gender"));
     let group = dim.group();
@@ -71,10 +87,14 @@ function characters_by_gender(ndx) {
         .innerRadius(50)
         .legend(dc.legend().x(1).y(70).itemHeight(13).gap(5))
         .renderLabel(false)
-        .ordinalColors(["#7CCFCD", "#E58579", "#822F56"])
+        .ordinalColors(["#57B2EA", "#E064CD", "#F8B702"])
         .transitionDuration(1000)
 
 }
+/*
+This function displays a piechart featuring race distribution across entire dataset
+Its dimensions key is 'Category' from dataset
+ */
 function characters_by_race(ndx) {
     let dim = ndx.dimension(dc.pluck("Category"));
     let group = dim.group();
@@ -98,6 +118,10 @@ function characters_by_race(ndx) {
         ])
         .transitionDuration(1000)
 }
+/*
+This function displays a piechart featuring alignment distribution across entire dataset
+Its dimensions key is 'Alignment' from dataset
+ */
 function characters_by_alignment(ndx) {
     let dim = ndx.dimension(dc.pluck("Alignment"));
     let group = dim.group();
@@ -121,6 +145,10 @@ function characters_by_alignment(ndx) {
         ])
         .transitionDuration(1000)
 }
+/*
+This function displays a linechart of first apperances throughout the years
+Its dimensions key is 'FirstApperance' from dataset
+ */
 function new_apperances_through_years(ndx) {
     let dim = ndx.dimension(dc.pluck("FirstApperance"));
     let numberofApperances = dim
@@ -152,6 +180,10 @@ function new_apperances_through_years(ndx) {
         .dotRadius(10)
         
 }
+/*
+This function displays a serieschart of number of first apperances throughout the years by each Publisher
+Its dimensions keys are 'Publisher' and 'FirstApperance' from dataset
+ */
 function new_apperances_through_years_by_universum(ndx, dcData) {
     // setting dimension or serierschart
     let dim = ndx.dimension(function(data){
@@ -186,10 +218,15 @@ function new_apperances_through_years_by_universum(ndx, dcData) {
     .seriesAccessor(function(d) { return d.key[0];})
     .keyAccessor(function(d) { return +d.key[1]; })
     .valueAccessor(function(d) { return +d.value; })
+    .ordinalColors(["#C54961",["#7BCFCD"]])
     .legend(dc.legend().x(70).y(50).itemHeight(20).gap(10).horizontal(4).legendWidth(200).itemWidth(120));
 }
+/*
+This function displays a scatterplot featuring corelation between characters intelligence and power marked by gender 
+ */
 function power_to_int_distribution_by_gender(ndx) {
-    let universumColors = d3
+    //assigning colors to values from dataset
+    let genderColors = d3
         .scale
         .ordinal()
         .domain(["female", "male", ["unidentified"]])
@@ -201,7 +238,7 @@ function power_to_int_distribution_by_gender(ndx) {
         return [d.Power, d.Intelligence, d.HeroName, d.Gender];
     });
     //grouping values
-    let universeGroup = uDim.group();
+    let genderGroup = uDim.group();
     let minPower = 0;
     let maxPower = 105;
 
@@ -222,9 +259,9 @@ function power_to_int_distribution_by_gender(ndx) {
         .colorAccessor(function (d) {
             return d.key[3];
         })
-        .colors(universumColors)
+        .colors(genderColors)
         .dimension(pDim)
-        .group(universeGroup)
+        .group(genderGroup)
         .symbolSize(7)
         .margins({top: 10, right: 50, bottom: 75, left: 75})
 }
