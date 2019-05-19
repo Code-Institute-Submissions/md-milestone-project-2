@@ -39,14 +39,27 @@ Users want to look up and compare data. Data is visualized through interactive g
 
 ## Design 
 
-###Color Pallet
+Overall design is very simplistic: Sidebar on the left content divided in sections to the right.
+Additionally all elements are seprate from each other by use of colors. Each section displaying data has its own background, as well as Navigation elements. All Interactive elements like graphs and buttons use seperate color pallet for clear indication fo interactivity.
 
-####UI Elements Colors:
-<img src ="./readme_assets/uicolors.png">
+### Color Pallet
+The Goal for color were readability and ease of distiguising elements in graphs. 
 
-####Data Elements Colors:
+#### UI Elements Colors:
+UI Elements are mostly represented by range of blacks and greys which helps to contrast them from interactive elements like buttons and graphs
+<img src ="./readme_assets/uicolors.png"/>
 
-####Gender Colors:
+#### Data Elements Colors:
+Data elements as well as interactive parts of the projects (buttons) are represented by range of vibrant and heriarichal colors 
+<img src ="./readme_assets/datacolors.png"/>
+
+#### Gender Colors:
+Some may ask why gender colors are so different from main pallet. My reasoning behind that change was that 'blue' and 'pink' contrast is very cultulary clear we assossiate blue with males and pink with females. There might be some exceptions I think most users will be able to make that connections. Becaouse of that change there is no need for a legend when using scatterplot which reduces visual clutter
+
+<img src ="./readme_assets/gendercolors.png"/>
+
+#### Typography 
+The website uses Inter across all type elements. 
 
 ## Features
  
@@ -91,6 +104,46 @@ displayed data
 3. All JavaScript code was put through [semantic validator](http://esprima.org) with no issues found.
 
 4. The website was tested on mobile devices (iPhone X and iPhone XR) and was reported working as expected. Please note that this project is NOT MOBILE Responsive but all care was put into making it functional on smaller screen sizes. For graphs that are too big to fit given display CSS property overflow: auto; was used for horizontal scrolling option.
+
+### User Stories Testing
+Number of manual test were performed following user stories highlighted in UX Section of this document.
+
+### Manual Testing
+
+#### Sidebar
+
+1. Inside sidebar elements as well as collapse button are sticking when scrolling
+2. Collapse function is working properlly
+3. Universum Selector is filtering data correctly
+4. Race Selector is filtering data correctly
+5. Alignment Selector is filtering data correclty
+6. Comination of Selectors Values works as expected applying all filters to graphs
+7. Rest button properly resets all filters and redraws all graphs to default values
+
+- All following test were comfirmed on mobile resolutions through Google Dev Tools
+
+#### Graphs
+1. All Graphs display tooltips where appropriate.
+2. All Graphs and Charts react to filters and interaction 
+3. All Graphs and Charts use overflow:auto for mobile horizontal scrolling and this is functioning properlly
+
+#### API Behaviour 
+1. API Loader is displayed when JavaScript function is engaged
+2. All the information IF AVAIABLE is displayed and formated properlly in render area
+    - Please note that Superhero API has some bugs of its own. You can read more about problems user may encounter when using Random Super Hero Generator [HERE]()
+3. Error Messeges for STATUS 404 and 503 are working as expected and render as a message in h1 tags
+
+## Bugs 
+Following the test conducted in previous section of this document I have encounter following issues:
+
+### API
+1. To best of my knowladge and research there is no obvious way to allow `Access-Control-Allow-Origin` on Github Pages due to this I had to use [CORS Proxy](https://cors.io/). Unfortunetally this service appears to be unavaiable on some occasions which results in API responding with code 503. In order to give user context error message was provided.
+2. Resources (mainly images) are missing from some records in API dataset. This may result in some information not being rendered to user.
+Example Screenshot:
+<img src="./readme_assets/api-info-missing.png"/> 
+
+
+### iOS and Safari
 
 ## Deployment
 

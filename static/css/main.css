@@ -186,6 +186,9 @@ path.line
   width: 100%;
   margin: 0 auto;
 }
+#character-info-target h1 {
+  color: #fff;
+}
 /*Back to top------------------------------------------------------------------*/
 #back-to-top {
   display: flex;

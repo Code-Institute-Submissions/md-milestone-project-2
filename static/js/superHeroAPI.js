@@ -42,12 +42,12 @@ function getCharacterInfo() {
             //Push data to charInfo Function tobe displayed
             $('#character-info-target').html(charInfo(response));
 
-        }, function (errorResponse) {
-            if (errorResponse.status == 404) {
-                $('#character-info-target').html(`<p>404: Resource doesn't exist or was moved. Sorry :(</p>`)
-            } else if (errorResponse.status == 503) {
-                console.log(errorResponse);
-                $('#character-info-target').html(`<p>503: API IS CURRENTLY UNAVAILABLE. Please try again later</p>`)
-            }
+        }, function (response) {
+            if (response.status == 404) {
+                $('#character-info-target').html(`<h1>404: Resource doesnt exist or was moved. Sorry :(</h1>`);
+            } else if (response.status == 503) {
+                console.log(response);
+                $('#character-info-target').html(`<h1>503: API or CORS Proxy IS CURRENTLY UNAVAILABLE. Please try again later</h1>`);
+            } 
         })
 }
