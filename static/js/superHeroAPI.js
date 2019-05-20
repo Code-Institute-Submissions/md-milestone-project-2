@@ -35,18 +35,17 @@ function getCharacterInfo() {
         return random;
     }
     console.log(randomCharacterID());
-    $   //Requesting JSON data from API by using randomly generated ID
-        .when($.getJSON(`https://cors.io/?https://superheroapi.com/api/2459027580820827/${randomCharacterID()}`))
+    //Requesting JSON data from API by using randomly generated ID
+    $.when($.getJSON(`https://cors.io/?https://superheroapi.com/api/2459027580820827/${randomCharacterID()}`))
         .then(function (response) {
-            console.log(response);
             //Push data to charInfo Function tobe displayed
             $('#character-info-target').html(charInfo(response));
 
         }, function (response) {
+            // Displaying error message for codes 404 and 503
             if (response.status == 404) {
                 $('#character-info-target').html(`<h1>404: Resource doesnt exist or was moved. Sorry :(</h1>`);
             } else if (response.status == 503) {
-                console.log(response);
                 $('#character-info-target').html(`<h1>503: API or CORS Proxy IS CURRENTLY UNAVAILABLE. Please try again later</h1>`);
             } 
         })
