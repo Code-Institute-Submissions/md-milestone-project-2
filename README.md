@@ -47,18 +47,25 @@ The Goal for color was readability and ease of distinguishing elements in graphs
 #### UI Elements Colors:
 
 UI Elements are mostly represented by a range of blacks and greys which helps to contrast them from interactive elements like buttons and graphs.
-<img src ="./readme_assets/uicolors.png"style="width: 100%"/>
+
+<div>
+    <img src ="./readme_assets/uicolors.png" style="width: 100%"/>
+</div>
 
 #### Data Elements Colors:
 
 Data elements, as well as interactive parts of the projects (buttons), are represented by a range of vibrant and hierarchal colors.
-<img src ="./readme_assets/datacolors.png" style="width: 100%"/>
+<div>
+    <img src ="./readme_assets/datacolors.png" style="width: 100%"/>
+</div>
 
 #### Gender Colors:
 
 Some may ask why gender colors are so different from the main pallet. My reasoning behind that change was that 'blue' and 'pink' contrast is very culturally clear we associate blue with males and pink with females. There might be some exceptions I think most users will be able to make that connection. Because of that change, there is no need for a legend when using scatterplot which reduces visual clutter
 
-<img src ="./readme_assets/gendercolors.png"style="width: 100%"/>
+<div>
+    <img src ="./readme_assets/gendercolors.png" style="width: 100%"/>
+</div>
 
 #### Typography 
 
