@@ -7,6 +7,8 @@
             content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <!---<meta http-equiv="X-UA-Compatible" content="IE=edge">-->
         <title>Marvel vs DC</title>
+        <!--favicon-->
+        <link rel="shortcut icon" type="image/ico" href="./static/img/favicon.ico">
         <!-- Bootstrap CSS -->
         <link
             rel="stylesheet"
@@ -63,11 +65,13 @@
             </nav>
             <!-- Page Content Holder -->
             <main id="content">
+                <!--Collapse Sidebar button-->
                 <button type="button" id="sidebarCollapse" class="sticky">
                     <span></span>
                     <span></span>
                     <span></span>
                 </button>
+                <!--Pie Charts Section-->
                 <div class="row piecharts">
                     <div class="col-sm-12 d-sm-block col-md-12 col-lg-4 d-md-inline">
                         <h5>Characters by Race:</h5>
@@ -82,27 +86,32 @@
                         <div id="characters_by_alignment"></div>
                     </div>
                 </div>
+                <!--Line Chart Section-->
                 <div class="row linechart">
                     <div class="col-12">
                         <h5>Total of new apperances through years</h5>
                         <div id="new_apperance_through_years"></div>
                     </div>
                 </div>
-
+                <!--Series Chart Section-->
                 <div class="row seriesChart">
                     <div class="col-12">
                         <h5>Total of new apperances by Universum through years</h5>
                         <div id="new_apperance_through_years_by_universum"></div>
                     </div>
                 </div>
+                <!--Scatterplot Section-->
                 <div class="row scatterplot">
                     <div id="power_to_int_distribution_by_gender" class="col-12"></div>
                 </div>
+                <!--API Render AREA-->
                 <div class="row">
                     <div id="characterWiki">
+                        <!--Action button triggering JS-->
                         <button class="randomSuperHero" onclick="getCharacterInfo()">Show me random superhero!</button>
                         <div class="randomHeroRenderArea row d-flex">
                             <div class="col-12">
+                                <!--Div targeted by JS-->
                                 <div id="character-info-target" class="col-md-12"></div>
                             </div>
                         </div>
